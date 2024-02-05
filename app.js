@@ -12,10 +12,11 @@ function exibirTextoNaTela(tag, texto){
 }
 
 exibirTextoNaTela('h1', 'Jogo do Número Secreto');
-exibirTextoNaTela('p', 'Insira um número de 1 a 100');
+exibirTextoNaTela('p', 'Insira um número de 1 a 10');
 
 function verificarChute(){
-    console.log(numeroSecreto);
+    let chute = document.querySelector('input').value;
+    console.log(chute == numeroSecreto);
 }
 
 function gerarNumeroAleatorio(){

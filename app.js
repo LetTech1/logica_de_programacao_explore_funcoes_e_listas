@@ -4,6 +4,7 @@ titulo.innerHTML = 'Jogo do Número Secreto';
 let paragrafo = document.querySelector('p');
 paragrafo.innerHTML = 'Insira um número de 1 a 10'; */
 
+let listaDeNusmerosSecretos = [];
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
@@ -40,7 +41,15 @@ function exibirMensagemInicial(){
 }
 
 function gerarNumeroAleatorio(){
-    return parseInt(Math.random() * 10 + 1);
+    let numeroGerado = parseInt(Math.random() * 4 + 1);
+
+    if(listaDeNusmerosSecretos.includes(numeroGerado)){
+        return gerarNumeroAleatorio();
+    }else{
+        listaDeNusmerosSecretos.push(numeroGerado);
+        console.log(listaDeNusmerosSecretos);
+        return numeroGerado;
+    }
 }
 
 function limparCampo() {

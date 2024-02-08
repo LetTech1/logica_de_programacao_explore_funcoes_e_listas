@@ -5,6 +5,7 @@ let paragrafo = document.querySelector('p');
 paragrafo.innerHTML = 'Insira um número de 1 a 10'; */
 
 let listaDeNusmerosSecretos = [];
+let numeroMaximo = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
@@ -37,11 +38,16 @@ function verificarChute(){
 
 function exibirMensagemInicial(){
     exibirTextoNaTela('h1', 'Jogo do Número Secreto');
-    exibirTextoNaTela('p', 'Insira um número de 1 a 10');
+    exibirTextoNaTela('p', `Insira um número de 1 a ${numeroMaximo}`);
 }
 
 function gerarNumeroAleatorio(){
-    let numeroGerado = parseInt(Math.random() * 4 + 1);
+    let numeroGerado = parseInt(Math.random() * numeroMaximo + 1);
+    let quantidadeDeNumerosGerados = listaDeNusmerosSecretos.length;
+
+    if(quantidadeDeNumerosGerados == numeroMaximo){
+        listaDeNusmerosSecretos = [];
+    }
 
     if(listaDeNusmerosSecretos.includes(numeroGerado)){
         return gerarNumeroAleatorio();
